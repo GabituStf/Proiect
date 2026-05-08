@@ -1,15 +1,14 @@
 <template>
   <div class="products">
-    <h1>🛍️ Produsele Noastre</h1>
+    <h1>Produsele Noastre</h1>
     <div class="filters">
       <button @click="filter = 'Toate'" :class="{ active: filter === 'Toate' }">Toate</button>
-      <button @click="filter = 'Uscata'" :class="{ active: filter === 'Uscata' }">Uscată</button>
-      <button @click="filter = 'Umeda'" :class="{ active: filter === 'Umeda' }">Umedă</button>
+      <button @click="filter = 'Uscata'" :class="{ active: filter === 'Uscata' }">Uscata</button>
+      <button @click="filter = 'Umeda'" :class="{ active: filter === 'Umeda' }">Umeda</button>
       <button @click="filter = 'Snack'" :class="{ active: filter === 'Snack' }">Snack</button>
     </div>
     <div class="grid">
       <div v-for="p in filteredProducts" :key="p.id" class="card">
-        <div class="card-icon">🐾</div>
         <h3>{{ p.name }}</h3>
         <p class="brand">{{ p.brand }}</p>
         <p class="desc">{{ p.description }}</p>
@@ -25,12 +24,17 @@
 
 <script setup>
 import { ref, computed, onMounted } from 'vue'
+import { useRoute } from 'vue-router'
 import axios from 'axios'
 
+const route = useRoute()
 const products = ref([])
 const filter = ref('Toate')
 
 onMounted(async () => {
+  if (route.query.filter) {
+    filter.value = route.query.filter
+  }
   const res = await axios.get('http://localhost:3000/api/products')
   const unique = []
   const seen = new Set()
@@ -51,44 +55,17 @@ const filteredProducts = computed(() => {
 
 <style scoped>
 .products { padding: 2rem; max-width: 1200px; margin: 0 auto; }
-h1 { text-align: center; margin-bottom: 1.5rem; color: #e67e22; }
+h1 { text-align: center; margin-bottom: 1.5rem; color: #2e7d32; }
 .filters { display: flex; justify-content: center; gap: 1rem; margin-bottom: 2rem; }
-.filters button {
-  padding: 0.5rem 1.5rem;
-  border: 2px solid #e67e22;
-  background: white;
-  color: #e67e22;
-  border-radius: 20px;
-  cursor: pointer;
-  font-size: 0.9rem;
-}
-.filters button.active { background: #e67e22; color: white; }
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 1.5rem;
-}
-.card {
-  background: white;
-  border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  position: relative;
-}
-.card-icon { font-size: 2.5rem; text-align: center; margin-bottom: 0.5rem; }
-h3 { text-align: center; color: #333; margin-bottom: 0.3rem; }
-.brand { text-align: center; color: #e67e22; font-weight: bold; margin-bottom: 0.5rem; }
+.filters button { padding: 0.5rem 1.5rem; border: 2px solid #2e7d32; background: white; color: #2e7d32; border-radius: 20px; cursor: pointer; font-size: 0.9rem; }
+.filters button.active { background: #2e7d32; color: white; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.5rem; }
+.card { background: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.1); position: relative; }
+h3 { color: #333; margin-bottom: 0.3rem; }
+.brand { color: #2e7d32; font-weight: bold; margin-bottom: 0.5rem; }
 .desc { color: #666; font-size: 0.85rem; margin-bottom: 1rem; }
 .footer { display: flex; justify-content: space-between; align-items: center; }
 .weight { color: #999; font-size: 0.85rem; }
-.price { font-size: 1.2rem; font-weight: bold; color: #e67e22; }
-.category {
-  position: absolute;
-  top: 10px; right: 10px;
-  background: #fef3e2;
-  color: #e67e22;
-  padding: 0.2rem 0.6rem;
-  border-radius: 10px;
-  font-size: 0.75rem;
-}
+.price { font-size: 1.2rem; font-weight: bold; color: #f57f17; }
+.category { position: absolute; top: 10px; right: 10px; background: #e8f5e9; color: #2e7d32; padding: 0.2rem 0.6rem; border-radius: 10px; font-size: 0.75rem; }
 </style>
