@@ -35,7 +35,7 @@ onMounted(async () => {
   if (route.query.filter) {
     filter.value = route.query.filter
   }
-  const res = await axios.get('http://localhost:3000/api/products')
+  const res = await axios.get('https://caini-fericiti-backend.onrender.com/api/products')
   const unique = []
   const seen = new Set()
   for (const p of res.data) {
