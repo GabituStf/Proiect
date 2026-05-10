@@ -12,6 +12,8 @@ Link publicare: https://proiect-yjmk.onrender.com
    
 Caini Fericiti este o platformă e-commerce construită pentru proprietarii de câini care doresc să achiziționeze hrană de calitate pentru animalele lor de companie. Aplicația integrează două servicii cloud: Firebase Firestore, folosit pentru gestionarea și stocarea catalogului de produse, și un serviciu de tip media repository care furnizează dinamic imagini cu câini din peste 120 de rase, oferind un conținut vizual variat la fiecare accesare a platformei.
 
+Aplicația este găzduită pe platforma Render cu plan gratuit. Aceasta are o caracteristică prin care serverul backend intră în repaus după o perioadă de inactivitate. La prima accesare, serverul pornește din nou automat, ceea ce poate cauza o întârziere de aproximativ 50 de secunde până când produsele apar pe ecran.
+
 2. Descrierea problemei
    
 Ideea proiectului a pornit de la nevoia unui spațiu online simplu și intuitiv unde proprietarii de câini pot găsi rapid hrana potrivită pentru animalele lor. Platforma oferă posibilitatea de a naviga printr-un catalog complet de produse organizate pe categorii, de a filtra hrana după tip și de a vizualiza detalii complete despre fiecare produs.
