@@ -4,7 +4,7 @@ Stefan Valentin Gabriel
 
 Grupa 1147
 
-Link video:
+Link video: https://youtu.be/aSeRd-Zf2aU
 
 Link publicare: https://proiect-yjmk.onrender.com
 
