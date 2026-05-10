@@ -17,21 +17,28 @@ Ideea proiectului a pornit de la nevoia unui spațiu online simplu și intuitiv 
 3. Descriere API
    
 Aplicația utilizează două servicii cloud integrate:
+
 •	Firebase Firestore este o bază de date NoSQL în cloud oferită de Google, folosită în cadrul acestei aplicații pentru stocarea și gestionarea catalogului de produse. 
+
 •	Dog CEO API este un serviciu public de tip media repository care pune la dispoziție o colecție de peste 20.000 de imagini cu câini. Serviciul este accesat prin cereri HTTP de tip GET și nu necesită autentificare
 
 4. Flux de date
    
 Metode HTTP: aplicația folosește metodele GET și POST pentru comunicarea dintre frontend și backend. Frontend-ul trimite cereri HTTP către serverul Express, care preia datele din Firebase Firestore și le returnează clientului
+
 Autentificare Firebase: Credențialele Service Account sunt stocate securizat pe server ca variabile de mediu (FIREBASE_PROJECT_ID, FIREBASE_CLIENT_EMAIL, FIREBASE_PRIVATE_KEY) și nu sunt expuse în cod.
+
 Exemplu Request:
+
 •	GET /api/products – preia lista completă de produse din baza de date Firebase Firestore
 
 Exemplu Response: 
+
 •	Un array JSON care contine produsele din baza de date (nume, pret, categorie, brand, gramaj, descriere)
 
 5. Capturi ecran aplicație
  <img width="975" height="553" alt="image" src="https://github.com/user-attachments/assets/b39f30cd-05ee-465a-956a-013b945b0e38" />
+ 
 
  <img width="975" height="545" alt="image" src="https://github.com/user-attachments/assets/228ddd00-085c-417a-88eb-2620720a394c" />
 
